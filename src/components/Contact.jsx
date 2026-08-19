@@ -1,11 +1,13 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Mail, MapPin, Send, MessageSquare, Check, ArrowUpRight } from 'lucide-react'
+import { Mail, MapPin, Send, MessageSquare, Check, ArrowUpRight, Loader2, AlertCircle, RotateCcw } from 'lucide-react'
 import { GithubIcon, LinkedinIcon } from './Icons'
 
 export default function Contact() {
   const [copied, setCopied] = useState(false)
-  const [formSubmitted, setFormSubmitted] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [formStatus, setFormStatus] = useState('idle') // 'idle' | 'success' | 'error'
+  const [errorMessage, setErrorMessage] = useState('')
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -19,11 +21,43 @@ export default function Contact() {
     setTimeout(() => setCopied(false), 2500)
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    setFormSubmitted(true)
-    setTimeout(() => setFormSubmitted(false), 5000)
-    setFormData({ name: '', email: '', subject: '', message: '' })
+    setIsSubmitting(true)
+    setErrorMessage('')
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json'
+        },
+        body: JSON.stringify({
+          access_key: '3a44141d-880b-417d-9e95-0e80dbabc5e0',
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject || `Portfolio Inquiry from ${formData.name}`,
+          message: formData.message,
+          from_name: formData.name
+        })
+      })
+
+      const data = await response.json()
+
+      if (data.success) {
+        setFormStatus('success')
+        setFormData({ name: '', email: '', subject: '', message: '' })
+      } else {
+        setFormStatus('error')
+        setErrorMessage(data.message || 'Failed to send message. Please try again.')
+      }
+    } catch (err) {
+      setFormStatus('error')
+      setErrorMessage('Network error occurred. Please check your connection and try again.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -147,26 +181,54 @@ export default function Contact() {
               Fill out the form below and I will respond to your inquiry promptly.
             </p>
 
-            {formSubmitted ? (
-              <div className="p-5 rounded-2xl bg-emerald-50 dark:bg-emerald-500/10 border border-emerald-500/30 text-center space-y-1.5">
-                <div className="w-10 h-10 rounded-full bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mx-auto mb-1">
-                  <Check size={20} />
+            {formStatus === 'success' ? (
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="p-6 rounded-2xl bg-emerald-50 dark:bg-emerald-500/10 border border-emerald-500/30 text-center space-y-3"
+              >
+                <div className="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mx-auto mb-2 shadow-xs">
+                  <Check size={24} />
                 </div>
-                <h5 className="text-slate-900 dark:text-white font-bold text-base">Message Sent Successfully!</h5>
-                <p className="text-slate-600 dark:text-slate-300 text-xs">Thank you for reaching out. I'll get back to you shortly.</p>
-              </div>
+                <h5 className="text-slate-900 dark:text-white font-bold text-lg">Message Sent Successfully!</h5>
+                <p className="text-slate-600 dark:text-slate-300 text-xs leading-relaxed max-w-sm mx-auto">
+                  Thank you for reaching out, Mayank has received your message and will get back to you shortly.
+                </p>
+                <button
+                  type="button"
+                  onClick={() => setFormStatus('idle')}
+                  className="mt-2 inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-mono text-xs font-semibold transition-all shadow-xs cursor-pointer"
+                >
+                  <RotateCcw size={13} />
+                  <span>Send Another Message</span>
+                </button>
+              </motion.div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-3.5">
+                {formStatus === 'error' && (
+                  <motion.div 
+                    initial={{ opacity: 0, y: -8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="p-3 rounded-xl bg-red-50 dark:bg-red-500/10 border border-red-500/30 text-red-700 dark:text-red-400 flex items-start gap-2.5 text-xs"
+                  >
+                    <AlertCircle size={16} className="shrink-0 mt-0.5" />
+                    <span>{errorMessage || 'Failed to send message. Please try again.'}</span>
+                  </motion.div>
+                )}
+
+                <input type="checkbox" name="botcheck" className="hidden" style={{ display: 'none' }} />
+
                 <div className="grid sm:grid-cols-2 gap-3.5">
                   <div>
                     <label className="block text-[11px] font-mono text-slate-700 dark:text-slate-300 mb-1 font-semibold">YOUR NAME</label>
                     <input 
                       type="text" 
                       required
+                      disabled={isSubmitting}
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       placeholder="e.g. Recruiter / Hiring Manager" 
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-white dark:bg-[#181818] border border-slate-300 dark:border-[#282828] text-slate-900 dark:text-white text-xs focus:outline-none focus:border-emerald-500 transition-colors shadow-xs"
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-white dark:bg-[#181818] border border-slate-300 dark:border-[#282828] text-slate-900 dark:text-white text-xs focus:outline-none focus:border-emerald-500 transition-colors shadow-xs disabled:opacity-60"
                     />
                   </div>
                   <div>
@@ -174,10 +236,11 @@ export default function Contact() {
                     <input 
                       type="email" 
                       required
+                      disabled={isSubmitting}
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       placeholder="name@company.com" 
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-white dark:bg-[#181818] border border-slate-300 dark:border-[#282828] text-slate-900 dark:text-white text-xs focus:outline-none focus:border-emerald-500 transition-colors shadow-xs"
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-white dark:bg-[#181818] border border-slate-300 dark:border-[#282828] text-slate-900 dark:text-white text-xs focus:outline-none focus:border-emerald-500 transition-colors shadow-xs disabled:opacity-60"
                     />
                   </div>
                 </div>
@@ -187,10 +250,11 @@ export default function Contact() {
                   <input 
                     type="text" 
                     required
+                    disabled={isSubmitting}
                     value={formData.subject}
                     onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                     placeholder="Full-Stack / AI Opportunity" 
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-white dark:bg-[#181818] border border-slate-300 dark:border-[#282828] text-slate-900 dark:text-white text-xs focus:outline-none focus:border-emerald-500 transition-colors shadow-xs"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-white dark:bg-[#181818] border border-slate-300 dark:border-[#282828] text-slate-900 dark:text-white text-xs focus:outline-none focus:border-emerald-500 transition-colors shadow-xs disabled:opacity-60"
                   />
                 </div>
 
@@ -199,19 +263,30 @@ export default function Contact() {
                   <textarea 
                     rows={3}
                     required
+                    disabled={isSubmitting}
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     placeholder="Hi Mayank, I came across your portfolio and would like to discuss..." 
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-white dark:bg-[#181818] border border-slate-300 dark:border-[#282828] text-slate-900 dark:text-white text-xs focus:outline-none focus:border-emerald-500 transition-colors resize-none shadow-xs"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-white dark:bg-[#181818] border border-slate-300 dark:border-[#282828] text-slate-900 dark:text-white text-xs focus:outline-none focus:border-emerald-500 transition-colors resize-none shadow-xs disabled:opacity-60"
                   ></textarea>
                 </div>
 
                 <button 
                   type="submit" 
-                  className="w-full btn-primary flex items-center justify-center gap-2 py-3 rounded-xl font-mono font-bold text-xs cursor-pointer"
+                  disabled={isSubmitting}
+                  className="w-full btn-primary flex items-center justify-center gap-2 py-3 rounded-xl font-mono font-bold text-xs cursor-pointer disabled:opacity-70 disabled:cursor-not-allowed"
                 >
-                  <Send size={15} />
-                  <span>Send Message</span>
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 size={15} className="animate-spin" />
+                      <span>Sending Message...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Send size={15} />
+                      <span>Send Message</span>
+                    </>
+                  )}
                 </button>
               </form>
             )}
