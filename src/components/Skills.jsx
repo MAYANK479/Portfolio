@@ -93,8 +93,8 @@ export default function Skills() {
     {
       title: "AI & Machine Learning",
       subtitle: "Models, Pipelines & Vision",
-      badge: "Core Domain",
-      highlight: "VGG16 · MTCNN · XGBoost · LLMs",
+      badge: "Core Expertise",
+      highlight: "TensorFlow · Scikit-learn · OpenCV · LLMs",
       icon: <Brain size={20} className="text-emerald-600 dark:text-emerald-400" />,
       iconBg: "bg-emerald-50 dark:bg-emerald-500/10",
       iconBorder: "border-emerald-200 dark:border-emerald-500/30",
@@ -106,82 +106,54 @@ export default function Skills() {
         { name: "Keras", hot: false },
         { name: "OpenCV", hot: true },
         { name: "MTCNN", hot: true },
-        { name: "VGG16", hot: true },
-        { name: "NLP (TF-IDF)", hot: false },
-        { name: "LLMs (Gemini, Ollama, Qwen3)", hot: true }
+        { name: "Transfer Learning", hot: true },
+        { name: "NLP", hot: false },
+        { name: "LLMs", hot: true }
       ]
     },
     {
-      title: "Web Development",
-      subtitle: "Architecture & Microservices",
-      badge: "Production Ready",
-      highlight: "React 19 · Next.js · FastAPI · Spring Boot",
-      icon: <Layout size={20} className="text-teal-600 dark:text-teal-400" />,
-      iconBg: "bg-teal-50 dark:bg-teal-500/10",
-      iconBorder: "border-teal-200 dark:border-teal-500/30",
-      span: "lg:col-span-1",
-      skills: [
-        { name: "React 19", hot: true },
-        { name: "Next.js", hot: true },
-        { name: "Vite", hot: true },
-        { name: "Node.js", hot: false },
-        { name: "Express", hot: false },
-        { name: "FastAPI", hot: true },
-        { name: "Spring Boot", hot: true },
-        { name: "Flask", hot: false },
-        { name: "Django", hot: false }
-      ]
-    },
-    {
-      title: "Programming Languages",
-      subtitle: "Algorithmic & OOP Logic",
-      badge: "Polyglot",
-      highlight: "Python · Java · TypeScript · C++",
+      title: "Programming",
+      subtitle: "Languages & Scripting",
+      badge: "Core Foundations",
+      highlight: "Python · SQL · JavaScript · Java · C++",
       icon: <Code2 size={20} className="text-blue-600 dark:text-blue-400" />,
       iconBg: "bg-blue-50 dark:bg-blue-500/10",
       iconBorder: "border-blue-200 dark:border-blue-500/30",
       span: "lg:col-span-1",
       skills: [
         { name: "Python", hot: true },
-        { name: "C++", hot: false },
-        { name: "Java", hot: true },
         { name: "SQL", hot: true },
-        { name: "JavaScript (ES6+)", hot: true },
-        { name: "TypeScript", hot: true }
+        { name: "JavaScript", hot: true },
+        { name: "Java (Basic)", hot: false },
+        { name: "C++ (Basic)", hot: false }
       ]
     },
     {
-      title: "CS Fundamentals",
-      subtitle: "Theoretical Foundations",
-      badge: "Strong Foundation",
-      highlight: "DSA · OOP · DBMS · OS · Networks",
+      title: "Databases",
+      subtitle: "Relational & Structured Storage",
+      badge: "Data Layer",
+      highlight: "PostgreSQL · MySQL · Indexing · Schema Design",
       icon: <Server size={20} className="text-purple-600 dark:text-purple-400" />,
       iconBg: "bg-purple-50 dark:bg-purple-500/10",
       iconBorder: "border-purple-200 dark:border-purple-500/30",
       span: "lg:col-span-1",
       skills: [
-        { name: "Data Structures & Algorithms", hot: true },
-        { name: "Object-Oriented Programming (OOP)", hot: true },
-        { name: "DBMS", hot: true },
-        { name: "Operating Systems", hot: false },
-        { name: "Computer Networks", hot: false }
+        { name: "PostgreSQL", hot: true },
+        { name: "MySQL", hot: true }
       ]
     },
     {
-      title: "Tools & Databases",
-      subtitle: "DevOps & Infrastructure",
-      badge: "Deployment",
-      highlight: "PostgreSQL · Docker · Git · Vercel",
+      title: "Tools & Deployment",
+      subtitle: "DevOps, Containers & Hosting",
+      badge: "CI/CD & Cloud",
+      highlight: "Git · Docker · Vercel · Render",
       icon: <Wrench size={20} className="text-amber-600 dark:text-amber-400" />,
       iconBg: "bg-amber-50 dark:bg-amber-500/10",
       iconBorder: "border-amber-200 dark:border-amber-500/30",
-      span: "lg:col-span-1",
+      span: "lg:col-span-2",
       skills: [
-        { name: "Git & GitHub", hot: true },
+        { name: "Git", hot: true },
         { name: "Docker", hot: true },
-        { name: "PostgreSQL", hot: true },
-        { name: "MongoDB", hot: false },
-        { name: "MySQL", hot: false },
         { name: "Vercel", hot: true },
         { name: "Render", hot: true }
       ]

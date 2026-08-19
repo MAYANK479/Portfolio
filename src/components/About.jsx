@@ -6,22 +6,22 @@ export default function About() {
     {
       icon: <Brain className="text-emerald-600 dark:text-emerald-400" size={20} />,
       title: "AI & Machine Learning",
-      description: "Expertise in Scikit-learn, XGBoost, TensorFlow, Keras, OpenCV, MTCNN, Transfer Learning (VGG16), NLP (TF-IDF), and LLMs (Gemini, Ollama)."
-    },
-    {
-      icon: <Layers className="text-emerald-600 dark:text-emerald-400" size={20} />,
-      title: "Full-Stack Development",
-      description: "Building scalable web platforms using React 19, Next.js, Vite, Node.js, Express, FastAPI, Spring Boot, Flask, and Django."
+      description: "Expertise in Scikit-learn, XGBoost, TensorFlow, Keras, OpenCV, MTCNN, Transfer Learning, NLP, and LLMs."
     },
     {
       icon: <Code className="text-emerald-600 dark:text-emerald-400" size={20} />,
-      title: "Programming & Languages",
-      description: "Proficient in Python, C++, Java, SQL, JavaScript (ES6+), and TypeScript for algorithmic logic and scalable architectures."
+      title: "Programming",
+      description: "Proficient in Python, SQL, JavaScript, along with foundational knowledge in Java and C++."
     },
     {
       icon: <Database className="text-emerald-600 dark:text-emerald-400" size={20} />,
-      title: "CS Fundamentals & Tools",
-      description: "Strong foundation in Data Structures & Algorithms, OOP, DBMS, OS, Computer Networks, Docker, PostgreSQL, Git, Vercel, and Render."
+      title: "Databases & Storage",
+      description: "Hands-on experience designing and managing relational databases with PostgreSQL and MySQL."
+    },
+    {
+      icon: <Layers className="text-emerald-600 dark:text-emerald-400" size={20} />,
+      title: "Tools & Deployment",
+      description: "Strong workflow foundation utilizing Git, Docker containerization, Vercel, and Render for modern deployments."
     }
   ]
 
@@ -48,7 +48,7 @@ export default function About() {
             className="lg:col-span-6 space-y-4 text-slate-700 dark:text-slate-300 leading-relaxed text-sm sm:text-base"
           >
             <p>
-              Innovative and results-driven <strong className="text-slate-900 dark:text-white font-semibold">Full-Stack & AI Developer</strong> with expertise in Machine Learning, Computer Vision, and Full-Stack development.
+              Results-driven <strong className="text-slate-900 dark:text-white font-semibold">AI/ML &amp; Full-Stack Developer</strong> with strong foundations in Python, SQL, and JavaScript, specializing in Machine Learning, Computer Vision, and NLP.
             </p>
 
             <p>
@@ -56,7 +56,7 @@ export default function About() {
             </p>
 
             <p>
-              Hands-on experience building AI-powered applications, integrating advanced machine learning models, and developing scalable web platforms across <strong className="text-slate-900 dark:text-white">React, Next.js, Node.js, Spring Boot, and FastAPI</strong>.
+              Experienced in developing end-to-end intelligent applications, training &amp; evaluating deep learning models, and building scalable full-stack web platforms backed by PostgreSQL and containerized deployments.
             </p>
 
             <div className="pt-2 grid sm:grid-cols-2 gap-3">

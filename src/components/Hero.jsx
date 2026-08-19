@@ -5,10 +5,10 @@ import { GithubIcon, LinkedinIcon } from './Icons'
 
 export default function Hero() {
   const roles = [
-    "Full-Stack Developer",
-    "AI/ML Engineer",
+    "AI/ML Developer",
+    "Python & SQL Specialist",
     "Computer Vision & NLP",
-    "FastAPI & Spring Boot Architect"
+    "Full-Stack Web Architect"
   ]
 
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0)
@@ -98,12 +98,12 @@ export default function Hero() {
 
           {/* Description from Resume */}
           <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-xl leading-relaxed">
-            Innovative and results-driven Full-Stack & AI Developer with expertise in Machine Learning, Computer Vision, and Full-Stack development using React, Next.js, Node.js, Spring Boot, and FastAPI.
+            Results-driven AI/ML &amp; Full-Stack Developer with strong foundations in Python, SQL, and JavaScript, specializing in Machine Learning, Computer Vision, and scalable web solutions.
           </p>
 
           {/* Core Stacks Quick Badges */}
           <div className="flex flex-wrap gap-2 pt-1">
-            {["AI & ML Pipelines", "Computer Vision (VGG16/MTCNN)", "Spring Boot & FastAPI", "React 19 & Next.js"].map((tag) => (
+            {["Python & SQL", "Machine Learning & NLP", "Computer Vision (MTCNN)", "PostgreSQL & Docker"].map((tag) => (
               <span 
                 key={tag}
                 className="px-3 py-1 rounded-lg bg-slate-100 dark:bg-[#141414] border border-slate-200 dark:border-[#222222] text-xs font-mono text-slate-700 dark:text-slate-300"
