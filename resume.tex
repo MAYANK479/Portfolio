@@ -1,0 +1,127 @@
+\documentclass[letterpaper,10pt]{article}
+
+\usepackage{latexsym}
+\usepackage[margin=0.35in]{geometry}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks,colorlinks=true,linkcolor=blue,urlcolor=blue]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\urlstyle{same}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+\titleformat{\section}{
+  \vspace{-5pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-4pt}]
+
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-1.5pt}}
+  }
+}
+
+\begin{document}
+
+%----------HEADING----------
+\begin{center}
+    {\Huge \scshape Mayank Pandey} \\ \vspace{4pt}
+    \small 
+    \href{https://linkedin.com/in/mayank-pandey1331}{LinkedIn} 
+    $|$ \href{https://github.com/MAYANK479}{GitHub} 
+    $|$ \href{https://portfolio-mayank-projects1.vercel.app}{Portfolio-website} 
+    $|$ \href{mailto:mayankpandey1331@gmail.com}{mayankpandey1331@gmail.com}
+\end{center}
+
+%-----------SUMMARY-----------
+\section{Professional Summary}
+\small{Innovative and results-driven Full-Stack \& AI Developer with expertise in Machine Learning, Computer Vision, and Full-Stack development. Experienced in building production-ready AI applications, integrating deep learning models, and developing scalable distributed web platforms using React 19, Next.js, Node.js, Spring Boot, and FastAPI microservices.}
+
+%-----------TECHNICAL SKILLS-----------
+\section{Technical Skills}
+\begin{tabularx}{\textwidth}{@{}p{1.3in} X@{}}
+\textbf{AI/ML} & Scikit-learn, XGBoost, TensorFlow, Keras, OpenCV, MTCNN, Transfer Learning (VGG16), NLP (TF-IDF), LLMs (Gemini, Ollama) \\
+\textbf{Web Development} & React, Next.js, Vite, Node.js, Express, FastAPI, Spring Boot, Flask, Django \\
+\textbf{Programming} & Python, C++, Java, SQL, JavaScript (ES6+), TypeScript \\
+\textbf{CS Fundamentals} & Data Structures \& Algorithms, OOP, DBMS, Operating Systems, Computer Networks \\
+\textbf{Tools} & Git, Docker, PostgreSQL, MongoDB, MySQL, Vercel, Render \\
+\end{tabularx}
+
+%-----------PROJECTS-----------
+\section{Projects}
+
+\begin{tabular*}{1.0\textwidth}{l@{\extracolsep{\fill}}r}
+  \textbf{SentinelAI - Real-time Fraud Detection Platform} & \href{https://github.com/MAYANK479/SentinelAI}{GitHub} $|$ \href{https://sentinel-dashboard-zv4v.onrender.com}{Demo} \\
+  \textit{\small TypeScript, Next.js, FastAPI, Spring Boot, XGBoost, PostgreSQL, Docker} & \\
+\end{tabular*}\vspace{-5pt}
+\begin{itemize}[leftmargin=0.2in, label={\tiny$\bullet$}, itemsep=-1.5pt]
+    \resumeItem{Developed a high-performance fraud detection platform integrating rule-based heuristics with an XGBoost/Random Forest ML pipeline for real-time transaction risk scoring and anomaly detection.}
+    \resumeItem{Architected a dual-backend system: Spring Boot for core business logic and transaction handling, with a dedicated FastAPI microservice serving sub-50ms ML inference over REST.}
+    \resumeItem{Built a live monitoring dashboard in Next.js and TypeScript, enabling administrators to track flagged transactions, analytics, and anomaly trends instantly.}
+    \resumeItem{Deployed the full-stack containerized platform to Render with CI-friendly testing, exposing a live working demo.}
+\end{itemize}
+
+\vspace{2pt}
+\begin{tabular*}{1.0\textwidth}{l@{\extracolsep{\fill}}r}
+  \textbf{careerpilot-ai - Automated Career Platform} & \href{https://github.com/MAYANK479/careerpilot-ai}{GitHub} $|$ \href{https://careerpilot-ai-two-ebon.vercel.app}{Demo} \\
+  \textit{\small React 19, Node.js, Express, Vite, Local AI (Ollama + Qwen3), Tailwind CSS} & \\
+\end{tabular*}\vspace{-5pt}
+\begin{itemize}[leftmargin=0.2in, label={\tiny$\bullet$}, itemsep=-1.5pt]
+    \resumeItem{Engineered a comprehensive career preparation platform featuring ATS resume analysis, keyword-gap detection, and intelligent job matching algorithms.}
+    \resumeItem{Implemented a mock interview simulator powered entirely by locally-hosted AI models (Ollama + Qwen3), ensuring 100\% free and private AI inference with zero API cost.}
+    \resumeItem{Designed the resume-parsing and feedback pipeline with regex heuristics and TF-IDF to generate section-wise actionable improvement suggestions.}
+    \resumeItem{Optimized frontend performance utilizing React 19 and Vite for a blazing-fast, low-latency user experience, deployed on Vercel.}
+\end{itemize}
+
+\vspace{2pt}
+\begin{tabular*}{1.0\textwidth}{l@{\extracolsep{\fill}}r}
+  \textbf{Smart Expense Tracker} & \href{https://github.com/MAYANK479/smart-expense-tracker}{GitHub} $|$ \href{https://smart-expense-tracker-sable.vercel.app}{Demo} \\
+  \textit{\small React 18, Express, PostgreSQL, Gemini AI, Chart.js} & \\
+\end{tabular*}\vspace{-5pt}
+\begin{itemize}[leftmargin=0.2in, label={\tiny$\bullet$}, itemsep=-1.5pt]
+    \resumeItem{Built a full-stack expense tracking solution featuring automated receipt OCR powered by the Gemini AI API for structured line-item extraction.}
+    \resumeItem{Implemented comprehensive financial tools including monthly budget alerts, category-wise spend analytics, and CSV bank statement parsing for seamless data import.}
+    \resumeItem{Designed a normalized PostgreSQL schema for transactions, budgets, and categories to support fast querying, aggregation, and reporting.}
+    \resumeItem{Achieved 100\% integration test coverage ensuring enterprise-level reliability, successfully deployed across Vercel and Render.}
+\end{itemize}
+
+\vspace{2pt}
+\begin{tabular*}{1.0\textwidth}{l@{\extracolsep{\fill}}r}
+  \textbf{Deepfake Detection Model Comparison} & \href{https://github.com/MAYANK479/deepfake-detection-comparison}{GitHub} \\
+  \textit{\small Python, TensorFlow/Keras, OpenCV, MTCNN, Computer Vision} & \\
+\end{tabular*}\vspace{-5pt}
+\begin{itemize}[leftmargin=0.2in, label={\tiny$\bullet$}, itemsep=-1.5pt]
+    \resumeItem{Benchmarked 6 deep learning architectures (VGG16+MTCNN, CNN, LSTM, CNN+LSTM, InceptionV3, InceptionV3+Attention) for binary deepfake image classification across 2 datasets (12K+ images).}
+    \resumeItem{Identified CNN+InceptionV3+Attention as the top performer, achieving 99.66\% training and 100\% validation accuracy on Dataset 1.}
+    \resumeItem{Evaluated all models on accuracy and loss across train/validation splits, visualizing comparative performance trends to surface overfitting and generalization gaps.}
+    \resumeItem{Structured the codebase into reproducible notebooks with a shared MTCNN preprocessing pipeline for fair cross-model comparison.}
+\end{itemize}
+
+%-----------EDUCATION-----------
+\section{Education}
+\textbf{VIT Bhopal University} \hfill 2023 -- 2027 \\
+B.Tech CSE with Specialisation in AIML --- CGPA: 8.44/10 \hfill Bhopal, India
+
+%-----------CERTIFICATIONS-----------
+\section{Certifications}
+\begin{tabularx}{\textwidth}{@{}X r@{}}
+\textbf{NPTEL --- Introduction to Internet of Things} & NPTEL (IIT Kharagpur) --- Apr 2026 \\
+\textbf{Google IT Support Certificate} & Google Career Certificates --- Jan 2026 \\
+\textbf{AWS Certification Course} & Intellipaat --- Sep 2025 \\
+\textbf{Applied Machine Learning in Python} & University of Michigan --- Nov 2025 \\
+\textbf{NPTEL --- Cloud Computing} & NPTEL (IIT Kharagpur) --- Apr 2025 \\
+\end{tabularx}
+
+\end{document}
